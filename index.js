@@ -52,7 +52,6 @@ let queryOptions = {
  * @param {object} queryParams objeto que será transformado em um objeto entendido pela cláusula where do sequelize`
  * @param {queryOptions} options objeto que contém algumas configurações para o bom funcionamento da função.
  */
-let op = { lt: "lt", like: "like", gt: "gt" };
 function queryParamToSequelizeQuery(op, queryParams, options = queryOptions) {
   let queryParamKeys = Object.keys(queryParams);
   let sequelizeQuery = {};
@@ -63,7 +62,7 @@ function queryParamToSequelizeQuery(op, queryParams, options = queryOptions) {
     // valida se os campos passados no objeto estão nos campos listados em options
     if (!options.validFields.includes(field))
       throw new Error(`Campo '${field}' não é permitido`);
-    
+
     // valida se a expressão passada se encontra nas expressões permitidas
     if (!options.validExpressions.includes(operator))
       throw new Error(`Operador '${operator}' não é permitido`);
